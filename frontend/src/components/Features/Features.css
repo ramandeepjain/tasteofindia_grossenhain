@@ -1,0 +1,34 @@
+.features{
+    margin-bottom: var(--desktop-margin);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1336px;
+    padding: 0px 20px 0px 20px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    gap: 16px 190px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.feature-block{
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 18px;
+    text-align: center;
+}
+
+.feature-block h5{
+    font-size: 18px;
+    line-height: 150%;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.feature-block p{
+    font-size: 14px;
+    line-height: 150%;
+}

@@ -1,0 +1,94 @@
+.about{
+    margin-bottom: var(--desktop-margin);
+}
+
+.about-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1336px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;    
+}
+
+.about-data{
+    display: flex;
+    width: 100%;
+    max-width: 32%;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: 60px;
+}
+
+.about-data-top p{
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.about-data-top h2{
+    font-size: 32px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+.about-data-bottom {
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    row-gap: 30px;
+}
+
+.about-data-bottom p{
+    font-size: 16px;
+    line-height: 170%;
+}
+
+.about-data-bottom button{
+    display: inline-block;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 10px 22px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: transparent;
+    color: black;
+    font-weight: 400;
+    line-height: 120%;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.about-img-container{
+    display: flex;
+    width: 100%;
+    max-width: 68%;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    column-gap: 30px;
+}
+
+.about-img-container .biryani-img{
+    width: 100%;
+    max-width: 50%;
+    max-height: 395px;
+    min-height: 395px;
+    object-fit: cover;
+    object-position: -50% 0%;
+}
+
+.about-img-container .chicken-img{
+    width: 100%;
+    max-width: 50%;
+    max-height: 500px;
+    min-height: 500px;
+    object-fit: cover;
+}

@@ -1,0 +1,33 @@
+.menucategory{
+    margin-bottom: var(--desktop-margin);
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.menu-block{
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-block img{
+    filter: grayscale(100%);
+    width: 100%;
+    max-height: 600px;
+    min-height: 600px;
+    object-fit: cover;
+}
+
+.menu-overlay{
+    position: absolute;
+    inset: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 28px;
+    line-height: 150%;
+    font-weight: 600;
+}
