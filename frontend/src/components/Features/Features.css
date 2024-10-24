@@ -32,3 +32,14 @@
     font-size: 14px;
     line-height: 150%;
 }
+
+
+@media screen and (max-width: 479px) {
+    .features{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px 0px;
+    }
+}

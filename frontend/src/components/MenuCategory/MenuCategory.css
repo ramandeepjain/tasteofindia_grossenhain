@@ -31,3 +31,23 @@
     line-height: 150%;
     font-weight: 600;
 }
+
+@media screen and (max-width: 479px) {
+    .menucategory{
+        grid-template-columns: 1fr 1fr; 
+        margin-bottom: var(--mobile-margin);
+    };
+
+    .menu-block{
+        max-height: 260px;
+    }
+
+    .menu-block img{
+        filter: grayscale(50%);
+        max-height: 260px;
+        min-height: 260px;
+    }
+    .menu-overlay{
+        font-size: 18px;
+    }
+}

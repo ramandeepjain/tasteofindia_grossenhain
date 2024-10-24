@@ -94,3 +94,22 @@
     line-height: 170%;
     font-weight: 400;
 }
+
+@media screen and (max-width: 479px) {
+    .menu {
+        margin-bottom: var(--mobile-margin);
+    }
+
+    .menu-list-container{
+        flex-flow: column;
+        row-gap: 25px;
+    }
+
+    .menu-list-tabs{
+        margin-bottom: 20px;
+    }
+
+    .menu-item-img{
+        max-width: 100%;
+    }
+}

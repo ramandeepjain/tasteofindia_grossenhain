@@ -92,3 +92,33 @@
     min-height: 500px;
     object-fit: cover;
 }
+
+@media screen and (max-width: 479px) {
+    .about{
+        margin-bottom: var(--mobile-margin);
+    }
+    
+    .about-container{
+        flex-flow: column;
+        gap: 30px 0px;
+    }
+
+    .about-data{
+        max-width: 100%;
+        row-gap: 20px;
+    }
+
+    .about-img-container{
+        max-width: 100%;
+        column-gap: 20px;
+    }
+    .about-img-container .biryani-img{
+        object-position: 0% 0%;
+        max-height: 200px;
+        min-height: 200px;
+    }
+    .about-img-container .chicken-img{
+        max-height: 260px;
+        min-height: 260px;
+    }
+}
