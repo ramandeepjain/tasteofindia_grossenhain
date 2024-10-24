@@ -1,0 +1,111 @@
+// Place your key bindings in this file to override the defaultsauto[]
+
+[
+
+    {
+
+        "key": "ctrl+numpad_divide",
+
+        "command": "editor.action.commentLine",
+
+        "when": "editorTextFocus && !editorReadonly"
+
+    },
+
+    {
+
+        "key": "ctrl+oem_2",
+
+        "command": "-editor.action.commentLine",
+
+        "when": "editorTextFocus && !editorReadonly"
+
+    },
+
+    {
+
+        "key": "ctrl+w down",
+
+        "command": "workbench.action.terminal.focus"
+
+    },
+
+    {
+
+        "key": "ctrl+down",
+
+        "command": "-workbench.action.terminal.focus",
+
+        "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+
+    },
+
+    {
+
+        "key": "ctrl+w up",
+
+        "command": "workbench.action.focusActiveEditorGroup"
+
+    },
+
+    {
+
+        "key": "ctrl+w left",
+
+        "command": "workbench.action.focusLeftGroup"
+
+    },
+
+    {
+
+        "key": "ctrl+k ctrl+left",
+
+        "command": "-workbench.action.focusLeftGroup"
+
+    },
+
+    {
+
+        "key": "ctrl+w right",
+
+        "command": "workbench.action.focusRightGroup"
+
+    },
+
+    {
+
+        "key": "ctrl+k ctrl+right",
+
+        "command": "-workbench.action.focusRightGroup"
+
+    },
+
+    {
+
+        "key": "ctrl+t",
+
+        "command": "-workbench.action.showAllSymbols"
+
+    },
+
+    {
+
+        "key": "ctrl+t",
+
+        "command": "workbench.action.terminal.new",
+
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+
+    },
+
+    {
+
+        "key": "ctrl+shift+oem_3",
+
+        "command": "-workbench.action.terminal.new",
+
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+
+    }
+
+]
