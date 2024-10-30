@@ -38,3 +38,14 @@
     line-height: 100%;
     text-decoration: none;
 }
+
+
+@media screen and (max-width: 479px) {
+    .logo{
+        width: 150px;
+    }
+
+    .navbar-menu{
+        display: none;
+    }
+}

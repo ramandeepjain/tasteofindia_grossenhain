@@ -66,6 +66,12 @@
     border-radius: 30px;
 }
 
+.about-data-bottom button:hover{
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 .about-img-container{
     display: flex;
     width: 100%;

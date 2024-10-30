@@ -12,7 +12,7 @@ const Header = () => {
             <p>Willkommen im Taste of India, wo das reiche Erbe der indischen Küche mit jedem Bissen lebendig wird. 
               Jedes Gericht ist ein Genuss aus authentischen Zutaten, der altehrwürdigen Rezepte und unserer Leidenschaft, Ihnen die feinsten indischen Aromen auf den Tisch zu bringen. 
               </p>
-            <button>Reservieren</button>
+            <a href='#reservation' className='header-button'>Reservieren</a>
           </div>
           <div className="header-img">
             <img src={assets.dining_experience} alt="" />

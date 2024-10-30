@@ -3,7 +3,7 @@ import './Reservation.css'
 
 const Reservation = () => {
   return (
-    <div className='reservation'>
+    <div className='reservation' id='reservation'>
         <div className="reservation-container">
         <div className="reservation-text">
             <h1>Reservieren Sie Ihren Tisch für ein unvergessliches Essen</h1>

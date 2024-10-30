@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-top">
             <div className="footer-top-left">
                 <img src={assets.logo} alt="" />
-                <p>At DineNest, our menu features a variety of flavors and dishes to suit every palate. Check out our menu and enjoy a memorable meal</p>
+                <p>Von den rauchigen Tandoori-Gerichten über cremige Currys bis hin zu frisch gebackenem Naan spiegelt jeder Bissen die Vielfalt der kulinarischen Regionen Indiens wider.</p>
             </div>
             <div className="footer-top-right">
                 <div className="footer-top-right-col">

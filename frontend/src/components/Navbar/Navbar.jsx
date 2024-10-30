@@ -9,11 +9,9 @@ const Navbar = () => {
         <div className="navbar-container">
             <Link to='/'><img src={assets.logo} alt="" className='logo'/></Link>
             <ul className='navbar-menu'>
-                <Link to='/' className='navlink'>About</Link>
-                <a href='#explore-menu' className='navlink'>Menu</a>
-                <a href='#app-download' className='navlink'>Gallery</a>
-                <a href='#footer' className='navlink'>Reviews</a>
-                <a href='#footer' className='navlink'>Contact</a>
+                <a href='/#about' className='navlink'>Über uns</a>
+                <a href='/speisekarte' className='navlink'>Speisekarte</a>
+                <a href='/#reservation' className='navlink'>Reservieren</a>
             </ul>
         </div>
     </div>
