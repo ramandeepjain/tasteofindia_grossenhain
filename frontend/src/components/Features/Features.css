@@ -33,6 +33,30 @@
     line-height: 150%;
 }
 
+@media screen and (max-width: 991px) {
+    .features{
+        margin-bottom: var(--mobile-margin);
+        grid-column-gap: 60px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .features{
+        grid-column-gap: 30px;
+        grid-row-gap: 40px;
+        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .feature-block{
+        width: 100%;
+        max-width: 46%;
+    }
+}
+
 
 @media screen and (max-width: 479px) {
     .features{
@@ -41,5 +65,9 @@
         justify-content: center;
         align-items: center;
         gap: 50px 0px;
+    }
+    .feature-block{
+        width: 100%;
+        max-width: 100%;
     }
 }

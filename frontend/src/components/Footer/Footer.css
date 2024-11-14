@@ -5,6 +5,7 @@
     margin-left: auto;
     padding: 0px 20px;
     background-color: black;    
+    margin-bottom: var(--desktop-margin);
 }
 
 .footer-top{
@@ -29,7 +30,7 @@
 }
 
 .footer-top-left img{
-    width: 200px;
+    width: 150px;
 }
 
 .footer-top-right{
@@ -77,10 +78,20 @@
     line-height: 150%;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 991px) {
+    .footer{
+        margin-bottom: var(--mobile-margin);
+    }    
+    .footer-top-left{
+        max-width: 40%;
+    }
+}
+
+
+@media screen and (max-width: 769px) {
     .footer-top{
         flex-flow: column;
-        row-gap: 20px;
+        row-gap: 40px;
     }
 
     .footer-top-left, .footer-top-right{

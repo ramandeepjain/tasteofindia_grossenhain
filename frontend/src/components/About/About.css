@@ -10,7 +10,7 @@
     padding: 0px 20px 0px 20px;
     display: flex;
     justify-content: space-between;
-    column-gap: 20px;    
+    grid-column-gap: 80px;    
 }
 
 .about-data{
@@ -50,28 +50,6 @@
     line-height: 170%;
 }
 
-.about-data-bottom button{
-    display: inline-block;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 10px 22px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    background-color: transparent;
-    color: black;
-    font-weight: 400;
-    line-height: 120%;
-    font-size: 14px;
-    border-radius: 30px;
-}
-
-.about-data-bottom button:hover{
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
-
 .about-img-container{
     display: flex;
     width: 100%;
@@ -88,7 +66,6 @@
     max-height: 395px;
     min-height: 395px;
     object-fit: cover;
-    object-position: -50% 0%;
 }
 
 .about-img-container .chicken-img{
@@ -99,14 +76,14 @@
     object-fit: cover;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 991px) {
     .about{
         margin-bottom: var(--mobile-margin);
     }
     
     .about-container{
         flex-flow: column;
-        gap: 30px 0px;
+        gap: 50px 0px;
     }
 
     .about-data{
@@ -119,7 +96,29 @@
         column-gap: 20px;
     }
     .about-img-container .biryani-img{
-        object-position: 0% 0%;
+        max-height: 330px;
+        min-height: 330px;
+    }
+    .about-img-container .chicken-img{
+        max-height: 430px;
+        min-height: 430px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .about-img-container .biryani-img{
+        max-height: 260px;
+        min-height: 260px;
+    }
+    .about-img-container .chicken-img{
+        max-height: 360px;
+        min-height: 360px;
+    }
+}
+
+
+@media screen and (max-width: 479px) {
+    .about-img-container .biryani-img{
         max-height: 200px;
         min-height: 200px;
     }

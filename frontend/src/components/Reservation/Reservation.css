@@ -43,7 +43,7 @@
     width: 100%;
     max-width: 48%;
     padding: 50px;
-    background-color: white;
+    background-color: var(--bg);
 }
 
 .reservation-form-container .reservation_input, textarea{
@@ -52,6 +52,7 @@
     padding: 10px;
     border: 1px solid #c5c5c5;
     border-radius: 4px;
+    background-color: var(--bg);
 }
 
 .reservation_input:focus{
@@ -85,7 +86,7 @@
     text-align: left;
     cursor: pointer;
     border: none;
-    background-color: white;
+    background-color: var(--bg);
   }
   
   .dropdown-list {
@@ -95,7 +96,7 @@
     width: 100%;
     max-height: 120px; /* Limit dropdown height */
     overflow-y: auto; /* Enable scroll */
-    background-color: white;
+    background-color: var(--bg);
     border: 1px solid #c5c5c5;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -133,19 +134,29 @@
     border-color: var(--primary);
 }
 
-
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 991px) {
     .reservation{
         margin-bottom: var(--mobile-margin);
     }
 
     .reservation-container{
         flex-flow: column;
-        row-gap: 30px;
+        row-gap: 50px;
     }
 
     .reservation-text, .reservation-form{
         max-width: 100%;
+    }
+
+    .reservation-text h1{
+        font-size: 30px;
+    }
+}
+
+
+@media screen and (max-width: 479px) {
+    .reservation-container{
+        row-gap: 30px;
     }
 
     .reservation-text h1{
