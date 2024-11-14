@@ -12,6 +12,7 @@ import fresh_ingredients from './fresh_ingredients.png'
 import menu from './menu.png'
 import culinary from './culinary.png'
 import menu_beilagen from './menu_beilagen.jpg'
+import spices_indianbowls from './spices_indianbowls.webp'
 
 export const assets = {
     biryani,
@@ -26,5 +27,6 @@ export const assets = {
     logo,
     fresh_ingredients, 
     menu,
-    culinary
+    culinary,
+    spices_indianbowls
 }
