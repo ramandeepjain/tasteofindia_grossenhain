@@ -3,6 +3,7 @@ import chicken from './chicken.jpg'
 import dal from './dal.jpg'
 import dining_experience from './dining_experience.jpg'
 import dining_experience_2 from './dining_experience_2.jpg'
+import dining_experience_3 from './dining_experience_3.webp'
 import mutton from './mutton.jpg'
 import paneer from './paneer.jpg'
 import prawn from './prawns.jpg'
@@ -11,8 +12,9 @@ import logo from './logo.png'
 import fresh_ingredients from './fresh_ingredients.png'
 import menu from './menu.png'
 import culinary from './culinary.png'
-import menu_beilagen from './menu_beilagen.jpg'
 import spices_indianbowls from './spices_indianbowls.webp'
+import chicken2 from './chicken2.webp'
+import desserts from './desserts.webp'
 
 export const assets = {
     biryani,
@@ -20,6 +22,7 @@ export const assets = {
     dal,
     dining_experience,
     dining_experience_2,
+    dining_experience_3,
     mutton,
     paneer,
     prawn,
@@ -28,5 +31,7 @@ export const assets = {
     fresh_ingredients, 
     menu,
     culinary,
-    spices_indianbowls
+    spices_indianbowls,
+    chicken2,
+    desserts
 }

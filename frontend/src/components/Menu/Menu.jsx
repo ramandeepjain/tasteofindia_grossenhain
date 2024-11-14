@@ -14,7 +14,7 @@ const Menu = () => {
         </div>
         <div className="menu-list-container">
             <div className="menu-item-img">
-                <img src={assets.dining_experience_2} alt="" />
+                <img src={assets.dining_experience_3} alt="" />
             </div>
             <div className="menu-list">
                 <div className="menu-list-tabs">

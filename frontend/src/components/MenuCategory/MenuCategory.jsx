@@ -12,19 +12,19 @@ const MenuCategory = () => {
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.paneer} alt="" />
+            <img src={assets.chicken} alt="" />
             <div className="menu-overlay">
                 Chicken
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.chicken} alt="" />
+            <img src={assets.chicken2} alt="" />
             <div className="menu-overlay">
                 Lamm
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.spices} alt="" />
+            <img src={assets.desserts} alt="" />
             <div className="menu-overlay">
                 Dessert
             </div>
