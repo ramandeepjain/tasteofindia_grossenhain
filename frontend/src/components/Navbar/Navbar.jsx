@@ -1,19 +1,15 @@
-import React, {useContext } from 'react'
+import React, {useEffect, useState} from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom';
-// import { ScreenContext } from '../../context/ScreenContext';
 
 function toggleMenu() {
   const navbarMenu = document.getElementById('navbarMenu');
   navbarMenu.classList.toggle('show');
-  console.log(navbarMenu.classList)
   if (navbarMenu.classList.contains('show')) {
     navbarMenu.style.animation = 'moveDown .4s forwards';
-    console.log('up bakcwards')
   } else {
     navbarMenu.style.animation = 'moveUp .4s forwards';
-    console.log('up forwards')
   }
   
 }
@@ -27,7 +23,23 @@ export const list = (
 )
 
 const Navbar = () => {
-  // const isLargeScreen = useContext(ScreenContext);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 991);
+
+  useEffect(() => {
+      // Function to handle window resize events
+      const handleResize = () => {
+          setIsLargeScreen(window.innerWidth >= 991);
+      };
+
+      // Add event listener to window resize
+      window.addEventListener('resize', handleResize);
+
+      // Clean up event listener when the component is unmounted
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
+  }, []);
+
   return (
     <div className='navbar'>
       <div className="navbar-container">
@@ -35,8 +47,9 @@ const Navbar = () => {
         <div className="toggle-button" onClick={toggleMenu}>
           <svg width="2em" height="2em" viewBox="0 0 24 24"><path fill="white" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" /></svg>
         </div>
+        {isLargeScreen && list}
       </div>
-      {list}
+      {!isLargeScreen && list}
     </div>
   )
 }
