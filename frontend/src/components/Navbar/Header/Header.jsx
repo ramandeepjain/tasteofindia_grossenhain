@@ -2,6 +2,10 @@ import React from 'react'
 import './Header.css'
 import { assets } from '../../../assets/assets'
 
+window.addEventListener("load", () => {
+  document.querySelector(".box").classList.add("collapse-animation");
+});
+
 const Header = () => {
   return (
     <div className='header'>
@@ -16,6 +20,7 @@ const Header = () => {
           </div>
           <div className="header-img">
             <img src={assets.spices_indianbowls} alt="" />
+            <div className="box"></div>
           </div>
         </div>
       </div>
