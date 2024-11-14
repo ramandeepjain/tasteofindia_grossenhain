@@ -4,6 +4,7 @@ import { assets } from '../../../assets/assets'
 
 window.addEventListener("load", () => {
   document.querySelector(".box").classList.add("collapse-animation");
+  document.querySelector(".header-data-left").classList.add("letter-animate");
 });
 
 const Header = () => {

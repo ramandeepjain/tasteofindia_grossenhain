@@ -53,6 +53,7 @@
     justify-content: flex-end;
     align-items: flex-start;
     row-gap: 50px;
+    opacity: 0;
 }
 
 .header-data-left p{
@@ -153,7 +154,7 @@
 }
 
 .box.collapse-animation {
-    animation: collapse 0.5s ease-in-out; 
+    animation: collapse 20s ease-in-out; 
 }
 
 @keyframes collapse {
@@ -162,5 +163,21 @@
     }
     to {
         width: 0%;
+    }
+}
+
+.header-data-left.letter-animate {
+    animation: revealAndTranslate 0.5s ease forwards; /* Trigger animation */
+}
+
+/* Keyframes for the reveal and translateY animation */
+@keyframes revealAndTranslate {
+    from {
+        opacity: 0;
+        transform: translateY(100%); /* Start slightly down */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Slide up to original position */
     }
 }
