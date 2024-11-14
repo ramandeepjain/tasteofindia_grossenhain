@@ -8,25 +8,25 @@ const MenuCategory = () => {
         <div className="menu-block">
             <img src={assets.dal} alt="" />
             <div className="menu-overlay">
-                Vegetarian
+                Vegetarisch
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.biryani} alt="" />
+            <img src={assets.paneer} alt="" />
             <div className="menu-overlay">
                 Chicken
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.prawn} alt="" />
+            <img src={assets.chicken} alt="" />
             <div className="menu-overlay">
-                Mutton
+                Lamm
             </div>
         </div>
         <div className="menu-block">
             <img src={assets.spices} alt="" />
             <div className="menu-overlay">
-                Desserts
+                Dessert
             </div>
         </div>
     </div>
