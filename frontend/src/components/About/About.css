@@ -132,24 +132,36 @@
     }
 }
 
-.overlay-box {
-    width: 100%;
+.overlay-box-biryani, .overlay-box-chicken{
+    width: 101%;
     height: 100%;
     background-color: var(--bg);
     position: absolute;
     top: 0;
     left: 0;
+    transform: scaleY(1);
+    opacity: 1;
+    overflow: auto;
 }
 
-.overlay-box.collapse-animation {
-    animation: collapse 20s ease-in-out; 
+.overlay-box-biryani {
+    transform-origin: top;
 }
-/* 
-@keyframes collapse {
+
+.overlay-box-chicken {
+    transform-origin: bottom;
+}
+
+.collapse-height-animation {
+    animation: collapseHeight 0.6s ease-in-out; 
+    transform: scaleY(0);
+}
+
+@keyframes collapseHeight {
     from {
-        width: 100%;
+        transform: scaleY(1);
     }
     to {
-        width: 0%;
+        transform: scaleY(0);
     }
-} */
+}

@@ -153,8 +153,8 @@
     left: 0;
 }
 
-.box.collapse-animation {
-    animation: collapse 20s ease-in-out; 
+.collapse-animation {
+    animation: collapse 0.5s ease-in-out; 
 }
 
 @keyframes collapse {
@@ -166,7 +166,7 @@
     }
 }
 
-.header-data-left.letter-animate {
+.letter-animate {
     animation: revealAndTranslate 0.5s ease forwards; /* Trigger animation */
 }
 

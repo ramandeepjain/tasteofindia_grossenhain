@@ -1,28 +1,44 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import './About.css'
 import { assets } from '../../assets/assets'
 
 
-window.addEventListener('load', ()=> {
-    // Select the element you want to animate
-    const box = document.querySelector(".overlay-box");
-
-    // Create the Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                // Add the animation class when the element is in view
-                entry.target.classList.add("collapse-animation");
-                observer.unobserve(entry.target); // Optional: Stop observing once animation is triggered
-            }
-        });
-    }, { threshold: 0.5 }); // Adjust threshold as needed
-
-    // Start observing the element
-    observer.observe(box);
-})
-
 const About = () => {
+    const boxesRef = useRef([]); // Reference to the element you want to animate
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    console.log("Intersection ratio:", entry.intersectionRatio); // Debugging line                    
+                    if (entry.isIntersecting) {
+                        // // Remove the animation class to reset animation
+                        // entry.target.classList.remove("collapse-animation");
+
+                        // // Trigger a reflow/repaint by adding and removing the class again
+                        // // This ensures the animation restarts
+                        // void entry.target.offsetWidth; // This forces a reflow (a trick to restart the animation)
+
+                        // Add the animation class again to restart the animation
+                        entry.target.classList.add("collapse-height-animation");   
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 1 } // Adjust threshold as needed
+        );
+
+        // Start observing the element
+        boxesRef.current.forEach((boxRef) => {
+            if (boxRef) observer.observe(boxRef);
+        });
+
+        // Cleanup the observer when the component unmounts
+        return () => {
+            observer.disconnect();
+        };
+
+    }, []);
 
     return (
         <div className='about' id='about'>
@@ -43,10 +59,11 @@ const About = () => {
                 <div className="about-img-container">
                     <div className="biryani-img">
                         <img src={assets.biryani} alt="" />
-                        <div className="overlay-box"></div>
+                        <div className="overlay-box-biryani" ref={(el) => boxesRef.current.push(el)}></div>
                     </div>
                     <div className="chicken-img">
                         <img src={assets.paneer} alt="" />
+                        <div className="overlay-box-chicken" ref={(el) => boxesRef.current.push(el)}></div>
                     </div>
                 </div>
             </div>
