@@ -10,7 +10,6 @@ const About = () => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    console.log("Intersection ratio:", entry.intersectionRatio); // Debugging line                    
                     if (entry.isIntersecting) {
                         // // Remove the animation class to reset animation
                         // entry.target.classList.remove("collapse-animation");

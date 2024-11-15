@@ -14,10 +14,9 @@ const Footer = () => {
                 <div className="footer-top-right-col">
                     <div className='footer-top-right-col-title'>Pages</div>
                     <div className="footer-top-right-col-items">
-                        <a>Our Menu</a>
-                        <a>Our Story</a>
-                        <a>Contact us</a>
-                        <a>Reserver table</a>
+                        <a>Speisekarte</a>
+                        <a>Über uns</a>
+                        <a>Reservieren</a>
                     </div>
                 </div>
                 <div className="footer-top-right-col">

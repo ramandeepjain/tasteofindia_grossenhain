@@ -20,6 +20,7 @@
     font-weight: 500;
     line-height: 140%;
     width: 100%;
+    opacity: 0;
     /* max-width: 80%;    */
 }
 
@@ -145,24 +146,27 @@
 }
 
 .box {
-    width: 0%;
+    width: 100%;
     height: 100%;
-    background-color: var(--bg);
+    background-color: var(--primary);
     position: absolute;
     top: 0;
     left: 0;
+    transform-origin: right;
+    transform: scaleX(1);
 }
 
 .collapse-animation {
     animation: collapse 0.5s ease-in-out; 
+    transform: scaleX(0);
 }
 
 @keyframes collapse {
     from {
-        width: 100%;
+        transform: scaleX(1);
     }
     to {
-        width: 0%;
+        transform: scaleX(0);
     }
 }
 
