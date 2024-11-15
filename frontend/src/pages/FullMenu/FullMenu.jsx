@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import '../../components/Menu/Menu.css'
+import '../../components/Menu/MenuList/MenuList.css'
 import './FullMenu.css'
 import { assets } from '../../assets/assets'
-import { items } from '../../components/Menu/menu-items'
+import { items } from '../../components/Menu/MenuList/menu-items'
 
 const listContainerImage = (image) => {
   return (

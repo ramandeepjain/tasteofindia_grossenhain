@@ -1,34 +1,34 @@
 import React from 'react'
 import './MenuCategory.css'
-import { assets } from '../../assets/assets'
+import { assets } from '../../../assets/assets'
 
-const MenuCategory = () => {
+const MenuCategory = ({category, changeCategory}) => {
   return (
     <div className='menucategory'>
-        <div className="menu-block">
+        <a href="/#menu-list" onClick={()=>changeCategory("vegetarian")} className="menu-block">
             <img src={assets.dal} alt="" />
             <div className="menu-overlay">
                 Vegetarisch
             </div>
-        </div>
-        <div className="menu-block">
+        </a>
+        <a href="/#menu-list" onClick={()=>changeCategory("chicken")} className="menu-block">
             <img src={assets.chicken3} alt="" />
             <div className="menu-overlay">
                 Chicken
             </div>
-        </div>
-        <div className="menu-block">
+        </a>
+        <a href="/#menu-list" onClick={()=>changeCategory("lamm")} className="menu-block">
             <img src={assets.chicken2} alt="" />
             <div className="menu-overlay">
                 Lamm
             </div>
-        </div>
-        <div className="menu-block">
+        </a>
+        <a href="/#menu-list" onClick={()=>changeCategory("dessert")} className="menu-block">
             <img src={assets.desserts} alt="" />
             <div className="menu-overlay">
                 Dessert
             </div>
-        </div>
+        </a>
     </div>
   )
 }

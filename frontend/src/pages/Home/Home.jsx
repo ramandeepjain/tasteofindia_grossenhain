@@ -3,8 +3,9 @@ import './Home.css'
 import Header from '../../components/Navbar/Header/Header'
 import About from '../../components/About/About'
 import Features from '../../components/Features/Features'
-import MenuCategory from '../../components/MenuCategory/MenuCategory'
 import Menu from '../../components/Menu/Menu'
+import MenuCategory from '../../components/Menu/MenuCategory/MenuCategory'
+import MenuList from '../../components/Menu/MenuList/MenuList'
 import Reservation from '../../components/Reservation/Reservation'
 import Footer from '../../components/Footer/Footer'
 import Navbar from '../../components/Navbar/Navbar'
@@ -16,8 +17,9 @@ const Home = () => {
         <Header/>
         <About/>
         <Features/>
-        <MenuCategory/>
         <Menu/>
+        {/* <MenuCategory/>
+        <MenuList/> */}
         <Reservation/>
         <Footer/>
     </div>
