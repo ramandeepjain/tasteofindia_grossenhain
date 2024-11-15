@@ -12,7 +12,7 @@ const MenuCategory = () => {
             </div>
         </div>
         <div className="menu-block">
-            <img src={assets.chicken} alt="" />
+            <img src={assets.chicken3} alt="" />
             <div className="menu-overlay">
                 Chicken
             </div>

@@ -14,6 +14,7 @@ import menu from './menu.png'
 import culinary from './culinary.png'
 import spices_indianbowls from './spices_indianbowls.webp'
 import chicken2 from './chicken2.webp'
+import chicken3 from './chicken3.webp'
 import desserts from './desserts.webp'
 
 export const assets = {
@@ -33,5 +34,6 @@ export const assets = {
     culinary,
     spices_indianbowls,
     chicken2,
+    chicken3,
     desserts
 }
