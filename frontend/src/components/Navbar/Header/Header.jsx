@@ -42,8 +42,7 @@ const Header = () => {
         <h1 className={`${isAnimating ? 'letter-animate' : ''}`} > Erleben Sie die Aromen Indiens </h1>
         <div className="header-data">
           <div className={`header-data-left ${isAnimating ? 'letter-animate' : ''}`} >
-            <p>Willkommen im Taste of India, wo das reiche Erbe der indischen Küche mit jedem Bissen lebendig wird.
-              Jedes Gericht ist ein Genuss aus authentischen Zutaten, der altehrwürdigen Rezepte und unserer Leidenschaft, Ihnen die feinsten indischen Aromen auf den Tisch zu bringen.
+            <p>Willkommen bei Taste of India, dem ersten indischen Restaurant in Großenhain, das sich stolz im historischen und charmanten Roten Haus befindet. Hier wird jedes Gericht mit authentischen Zutaten und einer großen Leidenschaft zubereitet, um die besten indischen Aromen auf Ihren Teller zu bringen.
             </p>
             <a href='#reservation' className='header-button'>Reservieren</a>
           </div>
