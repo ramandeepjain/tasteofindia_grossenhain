@@ -1,13 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
-const cors = require('cors');
+// const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 
 // Configure the email transporter
@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Define the route to send emails
-app.post('/send-email', async (req, res) => {
+app.post('/api/send-email', async (req, res) => {
     const {
         firstName, lastName, email, phone,
         date, time, nPeople, occasion, specialRequest

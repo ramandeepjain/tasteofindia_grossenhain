@@ -42,7 +42,7 @@ const Reservation = () => {
         console.log('Form Submitted:', formData);
 
         try {
-            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/send-email`, formData);
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, formData);
             // setStatus('Email sent successfully!');
           } catch (error) {
             // setStatus('Failed to send email.');
@@ -81,19 +81,19 @@ const Reservation = () => {
                     <form onSubmit={handleSubmit} className='reservation-form-container'>
                         <div className="multi-fields">
                             <input className='reservation_input' type="text" name='firstName' value={formData.firstName} onChange={handleChange} placeholder='First Name' />
-                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Last Name *' required />
+                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Last Name *' />
                         </div>
                         <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email address' />
-                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Phone *' required />
+                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Phone *'  />
                         <div className="multi-fields">
-                            <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} required/>
+                            <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} />
 
                             <div className="reservation_input custom-dropdown" >
                                 <button
                                     type="button"
                                     className="dropdown-button"
                                     onClick={toggleDropdown}
-                                    style={{ color: formData.time ? 'black' : 'gray' }} required
+                                    style={{ color: formData.time ? 'black' : 'gray' }} 
                                 >
                                     {formData.time || "Select a time"}
                                 </button>
