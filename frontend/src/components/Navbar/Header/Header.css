@@ -64,6 +64,13 @@
     font-weight: 400;
 }
 
+.opening_hours p:first-child{
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 .header-button{
     text-decoration: none;
     display: inline-block;

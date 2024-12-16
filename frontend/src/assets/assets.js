@@ -15,7 +15,16 @@ import culinary from './culinary.png'
 import spices_indianbowls from './spices_indianbowls.webp'
 import chicken2 from './chicken2.webp'
 import chicken3 from './chicken3.webp'
+import chicken4 from './chicken4.png'
 import desserts from './desserts.webp'
+import dal_2 from './dal_2.webp'
+import pakoras from './pakoras.webp'
+import salat from './salat.webp'
+import tandoori from './tandoori.png'
+import fish from './fish_curry.png'
+import naan from './naan.png'
+import gulab_jamun from './gulab_jamun.png'
+import duck from './duck.png'
 
 export const assets = {
     biryani,
@@ -35,5 +44,14 @@ export const assets = {
     spices_indianbowls,
     chicken2,
     chicken3,
-    desserts
+    desserts,
+    dal_2,
+    pakoras,
+    salat,
+    tandoori,
+    fish,
+    naan,
+    duck,
+    gulab_jamun,
+    chicken4
 }

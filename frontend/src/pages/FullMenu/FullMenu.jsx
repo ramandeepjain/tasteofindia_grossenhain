@@ -64,20 +64,20 @@ const FullMenu = () => {
       <div className="fullmenu-title">
         <h2>Unsere Speisekarte</h2>
       </div>
-      {listContainerLeft(assets.paneer, "Vegetarisch", "vegetarian")}
-      {listContainerRight(assets.chicken, "Chicken", "chicken")}
-      {listContainerLeft(assets.mutton, "Lamm", "lamm")}
-      {listContainerRight(assets.dining_experience_2, "Ente", "ente")}
-      {listContainerLeft(assets.dining_experience_2, "Fisch", "fish")}
-      {listContainerRight(assets.dining_experience_2, "Scampi", "scampi")}
-      {listContainerLeft(assets.dining_experience_2, "Tandoori", "tandoori")}
-      {listContainerRight(assets.dining_experience_2, "Reisgerichte", "reisgerichte")}
-      {listContainerLeft(assets.dining_experience_2, "Suppen", "soups")}      
-      {listContainerRight(assets.dining_experience_2, "Vorspeisen", "starters")}
-      {listContainerLeft(assets.dining_experience_2, "Beilagen", "side-dishes")}
-      {listContainerRight(assets.dining_experience_2, "Salat", "salad")}
-      {listContainerLeft(assets.dining_experience_2, "Desserts", "dessert")}
-      {listContainerRight(assets.dining_experience_2, "Getränke", "drinks")}
+      {listContainerLeft(assets.dal_2, "Suppen", "soups")}      
+      {listContainerRight(assets.pakoras, "Vorspeisen", "starters")}
+      {listContainerLeft(assets.salat, "Salat", "salad")}
+      {listContainerRight(assets.paneer, "Vegetarisch", "vegetarian")}
+      {listContainerLeft(assets.chicken4, "Chicken", "chicken")}
+      {listContainerRight(assets.chicken3, "Lamm", "lamm")}
+      {listContainerLeft(assets.duck, "Ente", "ente")}
+      {listContainerRight(assets.fish, "Fisch", "fish")}
+      {listContainerLeft(assets.prawn, "Scampi", "scampi")}
+      {listContainerRight(assets.tandoori, "Tandoori", "tandoori")}
+      {listContainerLeft(assets.biryani, "Reisgerichte", "reisgerichte")}
+      {listContainerRight(assets.naan, "Beilagen", "side-dishes")}
+      {listContainerLeft(assets.gulab_jamun, "Desserts", "dessert")}
+      {/* {listContainerRight(assets.dining_experience_2, "Getränke", "drinks")} */}
     </div>
 
   )

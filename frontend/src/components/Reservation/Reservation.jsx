@@ -80,11 +80,11 @@ const Reservation = () => {
                 <div className="reservation-form">
                     <form onSubmit={handleSubmit} className='reservation-form-container'>
                         <div className="multi-fields">
-                            <input className='reservation_input' type="text" name='firstName' value={formData.firstName} onChange={handleChange} placeholder='First Name' />
-                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Last Name *' />
+                            <input className='reservation_input' type="text" name='firstName' value={formData.firstName} onChange={handleChange} placeholder='Vorname' />
+                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Name *' />
                         </div>
-                        <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email address' />
-                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Phone *'  />
+                        <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email Adresse' />
+                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Telefon *'  />
                         <div className="multi-fields">
                             <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} />
 
@@ -95,7 +95,7 @@ const Reservation = () => {
                                     onClick={toggleDropdown}
                                     style={{ color: formData.time ? 'black' : 'gray' }} 
                                 >
-                                    {formData.time || "Select a time"}
+                                    {formData.time || "Uhrzeit"}
                                 </button>
                                 {isTimeSelectionOpen && (
                                     <ul className="dropdown-list">
@@ -118,7 +118,7 @@ const Reservation = () => {
                         </div>                            
 
 
-                        <textarea className='reservation-form-request' rows="5" type="text" name='specialRequest' value={formData.specialRequest} onChange={handleChange} placeholder='Special Request' />
+                        <textarea className='reservation-form-request' rows="5" type="text" name='specialRequest' value={formData.specialRequest} onChange={handleChange} placeholder='Bemerkungen' />
 
                         <input type="submit" className='reserve_button' value="Reservieren" />
 
