@@ -33,12 +33,17 @@ const timeSlots = generateTimeSlots(17, 21, 15);
 
 const Reservation = () => {
     const [formData, setFormData] = useState(defaultFormData);
+    const [error, setError] = useState('');
     const [isTimeSelectionOpen, setIsTimeSelectionOpen] = useState(false);
     const toggleDropdown = () => setIsTimeSelectionOpen(!isTimeSelectionOpen);
 
     // Function to be called on form submission
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior (page reload)
+        if (!formData.time) {
+            setError('Bitte wählen Sie eine Uhrzeit.');
+            return;
+        }        
         console.log('Form Submitted:', formData);
 
         try {
@@ -66,6 +71,7 @@ const Reservation = () => {
             ...formData,
             [name]: value,
         });
+        setError('');
         setIsTimeSelectionOpen(false);
     }
 
@@ -81,12 +87,12 @@ const Reservation = () => {
                     <form onSubmit={handleSubmit} className='reservation-form-container'>
                         <div className="multi-fields">
                             <input className='reservation_input' type="text" name='firstName' value={formData.firstName} onChange={handleChange} placeholder='Vorname' />
-                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Name *' />
+                            <input className='reservation_input' type="text" name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Name *' required/>
                         </div>
-                        <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email Adresse' />
-                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Telefon *'  />
+                        <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email Adresse *' required/>
+                        <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Telefon *'  required/>
                         <div className="multi-fields">
-                            <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} />
+                            <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} required/>
 
                             <div className="reservation_input custom-dropdown" >
                                 <button
@@ -95,7 +101,7 @@ const Reservation = () => {
                                     onClick={toggleDropdown}
                                     style={{ color: formData.time ? 'black' : 'gray' }} 
                                 >
-                                    {formData.time || "Uhrzeit"}
+                                    {formData.time || "Uhrzeit *"}
                                 </button>
                                 {isTimeSelectionOpen && (
                                     <ul className="dropdown-list">
@@ -119,7 +125,7 @@ const Reservation = () => {
 
 
                         <textarea className='reservation-form-request' rows="5" type="text" name='specialRequest' value={formData.specialRequest} onChange={handleChange} placeholder='Bemerkungen' />
-
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
                         <input type="submit" className='reserve_button' value="Reservieren" />
 
                     </form>
