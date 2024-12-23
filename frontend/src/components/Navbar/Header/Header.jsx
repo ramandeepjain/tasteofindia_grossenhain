@@ -46,6 +46,7 @@ const Header = () => {
             </p>
             <div className="opening_hours"> 
               <p>Unsere Öffnungszeiten</p>
+              <p>Geschlossen am 24.12.2024</p>
               <p>Mo-Fr, Feiertags: 11:00-14:00, 17:00-22:00</p>
             </div>
             <a href='#reservation' className='header-button'>Reservieren</a>

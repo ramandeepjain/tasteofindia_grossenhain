@@ -48,7 +48,7 @@ app.post('/api/send-email', async (req, res) => {
             from: process.env.EMAIL_USER,
             to: email,
             subject: `Vielen Dank für Ihre Reservierungsanfrage!`,
-            text: `Sehr geehrte*r ${lastName}, \n \nherzlichen Dank für Ihre Reservierungsanfrage! Wir freuen uns, Ihnen mitteilen zu können, dass Ihre Reservierung bestätigt ist. \n \nSollten wir doch noch Fragen haben, melden wir uns umgehend bei Ihnen. Andernfalls können Sie sicher sein, dass alles für Ihren Besuch vorbereitet ist. \n \nBei Fragen oder Änderungswünschen stehen wir Ihnen gerne zur Verfügung. \n \nWir freuen uns darauf, Sie am ${date} um ${time} Uhr bei uns begrüßen zu dürfen! \n \nMit freundlichen Grüßen,\nTOI Team`.trim()
+            text: `Sehr geehrte*r ${lastName}, \n \nherzlichen Dank für Ihre Reservierungsanfrage! Wir freuen uns, Ihnen mitteilen zu können, dass Ihre Reservierung bestätigt ist. \n \nSollten wir doch noch Fragen haben, melden wir uns umgehend bei Ihnen. Andernfalls können Sie sicher sein, dass alles für Ihren Besuch vorbereitet ist. \n \nBei Fragen oder Änderungswünschen stehen wir Ihnen gerne zur Verfügung. \n \nWir freuen uns darauf, Sie am ${date} um ${time} Uhr bei uns begrüßen zu dürfen! \n \nMit freundlichen Grüßen,\nTaste of India Großenhain Team`.trim()
         });
         res.status(200).send('Email sent successfully to the customer');
     } catch (error) {

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './Reservation.css'
 
-
 const defaultFormData = {
     firstName: '',
     lastName: '',
@@ -40,16 +39,23 @@ const Reservation = () => {
     // Function to be called on form submission
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior (page reload)
+
+        if (formData.date === '2024-12-24') {
+            setError('Wir sind am 24.12.2024 geschlossen.');
+            return;
+        }
+
         if (!formData.time) {
             setError('Bitte wählen Sie eine Uhrzeit.');
             return;
         }        
+
         console.log('Form Submitted:', formData);
 
         try {
             await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, formData);
             // setStatus('Email sent successfully!');
-          } catch (error) {
+        } catch (error) {
             // setStatus('Failed to send email.');
             console.error(error);
         }
@@ -64,6 +70,7 @@ const Reservation = () => {
             ...formData,
             [name]: value,
         });
+        setError('')
     };
 
     const handleTimeSelection = (name, value) => {
