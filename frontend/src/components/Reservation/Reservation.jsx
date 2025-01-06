@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import './Reservation.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './Reservation.css';
 
 const defaultFormData = {
     firstName: '',
@@ -12,7 +12,7 @@ const defaultFormData = {
     nPeople: '', 
     occasion: '',
     specialRequest: ''
-}
+};
 
 // Function to generate time slots between start and end hours in 15-minute intervals
 const generateTimeSlots = (startHour, endHour, interval) => {
@@ -27,23 +27,41 @@ const generateTimeSlots = (startHour, endHour, interval) => {
     return slots;
 };
 
-// Generate time slots between 17:00 and 22:00 with 15-minute intervals
-const timeSlots = generateTimeSlots(17, 21, 15);
+const getTimeSlotsForDate = (dateString) => {
+    const date = new Date(dateString);
+    const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+    if (dayOfWeek === 0) { // Sunday
+        return generateTimeSlots(17, 21, 15);
+    } else {
+        return [
+            ...generateTimeSlots(11, 13, 15),
+            ...generateTimeSlots(17, 21, 15)
+        ];
+    }
+};
 
 const Reservation = () => {
     const [formData, setFormData] = useState(defaultFormData);
     const [error, setError] = useState('');
     const [isTimeSelectionOpen, setIsTimeSelectionOpen] = useState(false);
+
+    const [timeSlots, setTimeSlots] = useState([]);
+
     const toggleDropdown = () => setIsTimeSelectionOpen(!isTimeSelectionOpen);
+
+    const handleDateChange = (e) => {
+        const { value } = e.target;
+        setFormData({ ...formData, date: value, 'time': '' });
+        setError('');
+        if (value) {
+            setTimeSlots(getTimeSlotsForDate(value));
+        }
+    };
 
     // Function to be called on form submission
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior (page reload)
-
-        if (formData.date === '2024-12-24') {
-            setError('Wir sind am 24.12.2024 geschlossen.');
-            return;
-        }
 
         if (!formData.time) {
             setError('Bitte wählen Sie eine Uhrzeit.');
@@ -60,7 +78,8 @@ const Reservation = () => {
             console.error(error);
         }
 
-        setFormData(defaultFormData)
+        setFormData(defaultFormData);
+        setTimeSlots([]);
     };
 
     // Handle input changes
@@ -70,7 +89,7 @@ const Reservation = () => {
             ...formData,
             [name]: value,
         });
-        setError('')
+        setError('');
     };
 
     const handleTimeSelection = (name, value) => {
@@ -80,7 +99,7 @@ const Reservation = () => {
         });
         setError('');
         setIsTimeSelectionOpen(false);
-    }
+    };
 
     return (
         <div className='reservation' id='reservation'>
@@ -99,7 +118,15 @@ const Reservation = () => {
                         <input className='reservation_input' type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Email Adresse *' required/>
                         <input className='reservation_input' type="text" name='phone' value={formData.phone} onChange={handleChange} placeholder='Telefon *'  required/>
                         <div className="multi-fields">
-                            <input className='reservation_input' type="date" name='date' value={formData.date} onChange={handleChange} style={{ color: formData.date ? 'black' : 'gray' }} required/>
+                            <input
+                                className='reservation_input'
+                                type="date"
+                                name='date'
+                                value={formData.date}
+                                onChange={handleDateChange}
+                                style={{ color: formData.date ? 'black' : 'gray' }}
+                                required
+                            />
 
                             <div className="reservation_input custom-dropdown" >
                                 <button
@@ -140,7 +167,7 @@ const Reservation = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Reservation
+export default Reservation;
