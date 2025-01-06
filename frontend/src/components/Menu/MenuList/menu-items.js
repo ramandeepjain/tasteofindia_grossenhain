@@ -568,12 +568,12 @@ export const items = [
         'price':'4,90',
         'category': 'side-dishes',
     },
-    {
-        'name':'Bathura',
-        'description': 'Brot mit Öl frittiert',
-        'price':'3,50',
-        'category': 'side-dishes',
-    },
+    // {
+    //     'name':'Bathura',
+    //     'description': 'Brot mit Öl frittiert',
+    //     'price':'3,50',
+    //     'category': 'side-dishes',
+    // },
     {
         'name':'Tandoori Roti',
         'description': 'Vollkornmehlbrot (vegan) im Ofen gebacken',
