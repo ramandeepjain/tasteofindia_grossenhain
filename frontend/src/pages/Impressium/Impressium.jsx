@@ -18,8 +18,8 @@ const Impressium = () => {
                 Radeburger Platz 11<br />
                 01558 Großenhain<br />
                 <br />
-                Tel:<br />
-                {/* Fax: +49 (0)30 280 454 83<br /> */}
+                Tel: +49 (0)3522-5280790<br />
+                Handy: +49 (0)174 7737688 (nur WhatsApp)<br />
                 Email: tasteofindia.grossenhain@gmail.com</p>
 
             {/* <h2>Betriebshaftpflichtversicherung:</h2>
