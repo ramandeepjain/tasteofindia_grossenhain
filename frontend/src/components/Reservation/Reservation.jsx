@@ -27,6 +27,11 @@ const generateTimeSlots = (startHour, endHour, interval) => {
     return slots;
 };
 
+// Blocked reservations (format: 'YYYY-MM-DD': ['HH:MM', ...])
+const blockedReservations = {
+    '2025-02-14': generateTimeSlots(17, 21, 15), // Example: Fully booked on Valentine's Day at these times
+};
+
 const getTimeSlotsForDate = (dateString) => {
     const date = new Date(dateString);
     const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
@@ -68,6 +73,11 @@ const Reservation = () => {
             return;
         }        
 
+        if (blockedReservations[formData.date]?.includes(formData.time)) {
+            setError('Das Restaurant ist zu dieser Zeit vollständig ausgebucht. Bitte wählen Sie eine andere Uhrzeit.');
+            return;
+        }
+
         console.log('Form Submitted:', formData);
 
         try {
@@ -93,6 +103,10 @@ const Reservation = () => {
     };
 
     const handleTimeSelection = (name, value) => {
+        if (blockedReservations[formData.date]?.includes(value)) {
+            setError('Das Restaurant ist zu dieser Zeit vollständig ausgebucht. Bitte wählen Sie eine andere Uhrzeit.');
+            return;
+        }        
         setFormData({
             ...formData,
             [name]: value,
