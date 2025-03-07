@@ -29,7 +29,7 @@ const generateTimeSlots = (startHour, endHour, interval) => {
 
 // Blocked reservations (format: 'YYYY-MM-DD': ['HH:MM', ...])
 const blockedReservations = {
-    '2025-02-14': generateTimeSlots(17, 21, 15), // Example: Fully booked on Valentine's Day at these times
+    '2025-03-08': generateTimeSlots(17, 20, 15), // Example: Fully booked on Valentine's Day at these times
 };
 
 const getTimeSlotsForDate = (dateString) => {
@@ -74,7 +74,7 @@ const Reservation = () => {
         }        
 
         if (blockedReservations[formData.date]?.includes(formData.time)) {
-            setError('Das Restaurant ist zu dieser Zeit vollständig ausgebucht. Bitte wählen Sie eine andere Uhrzeit.');
+            setError('Wir sind zwischen 17:00 und 20:00 Uhr vollständig ausgebucht. Bitte wählen Sie eine Uhrzeit nach 20:00 Uhr.');
             return;
         }
 
@@ -104,7 +104,7 @@ const Reservation = () => {
 
     const handleTimeSelection = (name, value) => {
         if (blockedReservations[formData.date]?.includes(value)) {
-            setError('Das Restaurant ist zu dieser Zeit vollständig ausgebucht. Bitte wählen Sie eine andere Uhrzeit.');
+            setError('Wir sind zwischen 17:00 und 20:00 Uhr vollständig ausgebucht. Bitte wählen Sie eine Uhrzeit nach 20:00 Uhr.');
             return;
         }        
         setFormData({
