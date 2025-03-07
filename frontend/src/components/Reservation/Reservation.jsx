@@ -29,7 +29,7 @@ const generateTimeSlots = (startHour, endHour, interval) => {
 
 // Blocked reservations (format: 'YYYY-MM-DD': ['HH:MM', ...])
 const blockedReservations = {
-    '2025-03-08': generateTimeSlots(17, 20, 15), // Example: Fully booked on Valentine's Day at these times
+    '2025-03-08': generateTimeSlots(17, 19, 15), // Example: Fully booked on Valentine's Day at these times
 };
 
 const getTimeSlotsForDate = (dateString) => {
