@@ -82,6 +82,7 @@ const Reservation = () => {
 
         try {
             await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, formData);
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/reservations`, formData);
             // setStatus('Email sent successfully!');
         } catch (error) {
             // setStatus('Failed to send email.');
@@ -173,6 +174,8 @@ const Reservation = () => {
 
 
                         <textarea className='reservation-form-request' rows="5" type="text" name='specialRequest' value={formData.specialRequest} onChange={handleChange} placeholder='Bemerkungen' />
+                        <p>Mit der Reservierung eines Tisches erklären Sie sich einverstanden mit unseren <a href='/datenschutz'>Datenschutzerklärung</a>.
+                        </p>
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         <input type="submit" className='reserve_button' value="Reservieren" />
 

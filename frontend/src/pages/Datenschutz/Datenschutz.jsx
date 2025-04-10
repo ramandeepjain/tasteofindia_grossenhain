@@ -26,7 +26,7 @@ const Datenschutz = () => {
 
             <h4>Wofür nutzen wir Ihre Daten?</h4>
 
-            <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+            <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Das Restaurant verarbeitet Ihre personenbezogenen Daten zum Zweck der Verwaltung und Nachverfolgung Ihrer Anfrage und der darauf zu gebenden Antworten, einschließlich der Kommunikation per E-Mail oder SMS in Verbindung mit Ihrer Reservierung (Eingangsbestätigung Ihrer Anfrage, Reservierungsbestätigung usw.). Darüber hinaus sammelt und verarbeitet das Restaurant Ihre personenbezogenen Daten allgemein zum Zweck der Verwaltung und Nachverfolgung seiner Beziehungen zu Ihnen, insbesondere für die Durchführung von Werbemaßnahmen an Sie, auf allen Medien, insbesondere per Telefon, E-Mail oder SMS. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
 
             <h4>Welche Rechte haben Sie bezüglich Ihrer Daten?</h4>
 
