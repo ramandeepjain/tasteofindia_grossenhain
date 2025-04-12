@@ -182,7 +182,7 @@
     padding-left: calc(var(--bs-gutter-x)*.5);
     padding-right: calc(var(--bs-gutter-x)*.5);
     flex: 0 0 auto;
-    width: 50%;
+    width: 40%;
     position: relative;
 }
 
@@ -194,7 +194,7 @@
 
 .col2-header-form{
     flex: 0 0 auto;
-    width: 50%;
+    width: 60%;
     max-width: 100%;
     padding-left: calc(var(--bs-gutter-x)*.5);
     padding-right: calc(var(--bs-gutter-x)*.5);
@@ -218,7 +218,7 @@
 
 .col2-header-form-select-2{
     flex: 0 0 auto;
-    width: 41.66666667%;
+    width: 45%;
     margin-top: var(--bs-gutter-y);
     max-width: 100%;
     padding-left: calc(var(--bs-gutter-x)*.5);
@@ -231,31 +231,21 @@
 }
 
 .col2-header-form-select-4{
-    --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
-    -webkit-appearance: none;
-    appearance: none;
-    /* background-color: var(--); */
-    /* background-image: var(--bs-form-select-bg-img),none; */
-    background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon,none);
-    background-position: right .75rem center;
-    background-repeat: no-repeat;
-    background-size: 16px 12px;
+    width: 100%;
+    background-color: var(--bg);
+    padding: .375rem 0.25rem;
     border: 1px solid #ced4da;
     border-radius: .375rem;
-    color: #212529;
-    display: block;
-    font-size: .9375rem;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: .375rem 2.25rem .375rem .75rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    width: 100%;
+}
+
+.react-datepicker-popper {
+    z-index: 9999 !important;
 }
 
 .col2-header-button-1{
     position: relative;
     flex: 0 0 auto;
-    width: 58.33333333%;
+    width: 50.33333333%;
     max-width: 100%;
     padding-left: calc(var(--bs-gutter-x)*.5);
     padding-right: calc(var(--bs-gutter-x)*.5);
@@ -343,9 +333,11 @@
 .table-container-3{
     box-shadow: 0 0 3px #3c485826 !important;
     display: block;
-  overflow-x: auto;
-  width: 100%;
-  border-radius: 0.375rem !important;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+    width: 100%;
+    border-radius: 0.375rem !important;
 }
 
 .table{
@@ -369,6 +361,13 @@
     width: 100%;
     border-collapse: collapse;
   caption-side: bottom;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fcf5f0; /* ensure visibility */
+    z-index: 2;
 }
 
 .table-head-th{

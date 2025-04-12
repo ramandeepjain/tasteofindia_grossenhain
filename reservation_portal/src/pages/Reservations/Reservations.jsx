@@ -4,23 +4,53 @@ import { assets } from '../../assets/assets'
 
 import { useEffect, useState } from 'react';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
+import { de } from 'date-fns/locale';
+
 const Reservations = () => {
     const [reservations, setReservations] = useState([]);
+    const [selectedDate, setSelectedDate] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [fetchError, setFetchError] = useState(null);    
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reservations`)
-            .then(async (res) => {
-                const text = await res.text(); // Get raw response as text
-                // console.log('Raw response:', text);
-                try {
-                    const json = JSON.parse(text);
-                    setReservations(json);
-                } catch (err) {
-                    console.error('Failed to parse JSON:', err);
-                }
-            })
-            .catch((err) => console.error('Fetch error:', err));
+        const today = new Date().toISOString().split('T')[0];
+        setSelectedDate(today);
     }, []);
+
+    useEffect(() => {
+        if (!selectedDate) return;
+
+        const formattedDate = selectedDate instanceof Date ? selectedDate.toISOString().split('T')[0] : selectedDate;
+    
+        const fetchReservations = async () => {
+          setLoading(true);
+          setFetchError(null);
+          try {
+            const response = await fetch(
+              `${import.meta.env.VITE_BACKEND_URL}/api/reservations?date=${formattedDate}`
+            );
+            const text = await response.text();
+    
+            try {
+              const json = JSON.parse(text);
+              setReservations(json);
+            } catch (jsonError) {
+              console.error('Failed to parse JSON:', jsonError);
+              setFetchError('Invalid server response.');
+            }
+          } catch (networkError) {
+            console.error('Fetch error:', networkError);
+            setFetchError('Unable to fetch reservations.');
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchReservations();
+      }, [selectedDate]);
 
     return (
         <div>
@@ -64,7 +94,7 @@ const Reservations = () => {
                         <div className="col2-1">
                             <div className="col2-header">
                                 <div className="col2-header-text">
-                                    <h5>Appointment</h5>
+                                    <h5>Reservations</h5>
                                 </div>
                                 <div className="col2-header-form">
                                     <div className="col2-header-form-2">
@@ -72,16 +102,18 @@ const Reservations = () => {
                                             <div className="col2-header-form-select-1">
                                                 <div className="col2-header-form-select-2">
                                                     <div className="col2-header-form-select-3">
-                                                        <select className="col2-header-form-select-4">
-                                                            <option value="EY" defaultValue="selected">Today</option>
-                                                            <option value="GY">Tomorrow</option>
-                                                            <option value="PS">Yesterday</option>
-                                                        </select>
+                                                        <DatePicker className="col2-header-form-select-4" 
+                                                                selected={selectedDate} 
+                                                                onChange={(date) => setSelectedDate(date)}
+                                                                dateFormat="eeee, dd. MMMM yyyy"
+                                                                locale={de}
+                                                                />
                                                     </div>
                                                 </div>
                                                 <div className="col2-header-button-1">
                                                     <div className="col2-header-button-2">
-                                                        <a className="col2-header-button-a" href="">
+                                                    <a className="col2-header-button-a" href="https://tasteofindia-grossenhain.de/#reservation"
+                                                        target="_blank" rel="noopener noreferrer">
                                                             Reservieren
                                                         </a>
                                                     </div>
@@ -95,13 +127,18 @@ const Reservations = () => {
                             <div className="table-container-1">
                                 <div className="table-container-2">
                                     <div className="table-container-3">
+                                    {loading ? (
+                                        <p>Loading reservations...</p>
+                                    ) : fetchError ? (
+                                        <p className="error">{fetchError}</p>
+                                    ) : (                                        
                                         <table className="table">
                                             <thead>
                                                 <tr>
                                                     <th className="table-head-th" style={{ minWidth: '50px' }}>#</th>
-                                                    <th className="table-head-th" style={{ minWidth: '180px' }}>First name</th>
-                                                    <th className="table-head-th" style={{ minWidth: '180px' }}>Last name</th>
-                                                    <th className="table-head-th" style={{ minWidth: '150px' }}>Date</th>
+                                                    <th className="table-head-th" style={{ minWidth: '150px' }}>First name</th>
+                                                    <th className="table-head-th" style={{ minWidth: '150px' }}>Last name</th>
+                                                    <th className="table-head-th" style={{ minWidth: '120px' }}>Date</th>
                                                     <th className="table-head-th">Time</th>
                                                     <th className="table-head-th">Persons</th>
                                                     <th className="table-head-th" style={{ minWidth: '220px' }}>Special requests</th>
@@ -119,13 +156,14 @@ const Reservations = () => {
                                                         <td className="table-body-td">{res.first_name}</td>
                                                         <td className="table-body-td">{res.last_name}</td>
                                                         <td className="table-body-td">{formattedDate}</td>
-                                                        <td className="table-body-td">{res.reservation_time}</td>
+                                                        <td className="table-body-td">{res.reservation_time.slice(0, 5)}</td>
                                                         <td className="table-body-td">{res.party_size}</td>
                                                         <td className="table-body-td">{res.special_request || '—'}</td>
                                                     </tr>);
                                                 })}
                                             </tbody>
                                         </table>
+                                    )}
                                     </div>
                                 </div>
                             </div>
