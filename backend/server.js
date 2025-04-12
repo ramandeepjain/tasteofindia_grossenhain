@@ -14,10 +14,12 @@ app.use(bodyParser.json());
 const postEmailRoute = require('./routes/postEmail');
 const postReservationsRoute = require('./routes/postReservations');
 const getReservationsRoute = require('./routes/getReservations');
+const deleteReservationRoute = require('./routes/deleteReservation')
 
 app.use(postEmailRoute);
 app.use(postReservationsRoute);
 app.use(getReservationsRoute);
+app.use(deleteReservationRoute);
 
 const PORT = 5000;
 app.listen(PORT, () => {

@@ -52,6 +52,26 @@ const Reservations = () => {
         fetchReservations();
       }, [selectedDate]);
 
+    const handleCancelReservation = async (reservationId) => {
+        if (!window.confirm("Bist du sicher, dass du diese Reservierung stornieren möchtest?")) return;
+        
+        try {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reservations/${reservationId}`, {
+            method: 'DELETE',
+            });
+        
+            if (res.ok) {
+            // Refresh the reservation list
+            setReservations((prev) => prev.filter((r) => r.reservation_id !== reservationId));
+            } else {
+            console.error('Failed to delete reservation');
+            }
+        } catch (err) {
+            console.error('Error deleting reservation:', err);
+        }
+    };
+      
+
     return (
         <div>
             <div className='nav'>
@@ -141,7 +161,8 @@ const Reservations = () => {
                                                     <th className="table-head-th" style={{ minWidth: '120px' }}>Date</th>
                                                     <th className="table-head-th">Time</th>
                                                     <th className="table-head-th">Persons</th>
-                                                    <th className="table-head-th" style={{ minWidth: '220px' }}>Special requests</th>
+                                                    <th className="table-head-th" style={{ minWidth: '180px' }}>Special requests</th>
+                                                    <th className="table-head-th"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -151,14 +172,19 @@ const Reservations = () => {
                                                         month: '2-digit',
                                                         year: 'numeric',
                                                     });
-                                                    return (<tr key={`${res.reservation_date}-${res.reservation_time}-${res.first_name}-${res.last_name}-${index}`}>
+                                                    return (<tr key={res.reservation_id}>
                                                         <td className="table-body-td">{index + 1}</td>
                                                         <td className="table-body-td">{res.first_name}</td>
                                                         <td className="table-body-td">{res.last_name}</td>
                                                         <td className="table-body-td">{formattedDate}</td>
                                                         <td className="table-body-td">{res.reservation_time.slice(0, 5)}</td>
                                                         <td className="table-body-td">{res.party_size}</td>
-                                                        <td className="table-body-td">{res.special_request || '—'}</td>
+                                                        <td className="table-body-td">{res.special_requests || '—'}</td>
+                                                        <td className='table-body-td'> 
+                                                            <button className="cancel-button" onClick={() => handleCancelReservation(res.reservation_id)}>
+                                                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 32 32" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 12.21875 10.78125 L 10.78125 12.21875 L 14.5625 16 L 10.78125 19.78125 L 12.21875 21.21875 L 16 17.4375 L 19.78125 21.21875 L 21.21875 19.78125 L 17.4375 16 L 21.21875 12.21875 L 19.78125 10.78125 L 16 14.5625 Z"></path></svg>
+                                                            </button>
+                                                        </td>
                                                     </tr>);
                                                 })}
                                             </tbody>

@@ -24,6 +24,7 @@ router.get('/api/reservations', async (req, res) => {
 
     const result = await pool.query(`
       SELECT 
+        r.reservation_id,
         r.reservation_date,
         r.reservation_time,
         c.first_name,
