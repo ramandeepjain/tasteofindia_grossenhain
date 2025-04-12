@@ -13,9 +13,11 @@ app.use(bodyParser.json());
 // Import and use routes
 const postEmailRoute = require('./routes/postEmail');
 const postReservationsRoute = require('./routes/postReservations');
+const getReservationsRoute = require('./routes/getReservations');
 
 app.use(postEmailRoute);
 app.use(postReservationsRoute);
+app.use(getReservationsRoute);
 
 const PORT = 5000;
 app.listen(PORT, () => {
