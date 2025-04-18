@@ -36,7 +36,17 @@ const getTimeSlotsForDate = (dateString) => {
     const date = new Date(dateString);
     const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
+    const isSpecialSunday = date.getDate() === 20 &&
+                            date.getMonth() === 3 && // April is 3 (0-based)
+                            date.getFullYear() === 2025;
+
     if (dayOfWeek === 0) { // Sunday
+        if (isSpecialSunday) {
+            return [
+                ...generateTimeSlots(11, 13, 15),
+                ...generateTimeSlots(17, 21, 15)
+            ];
+        }
         return generateTimeSlots(17, 21, 15);
     } else {
         return [
@@ -45,6 +55,7 @@ const getTimeSlotsForDate = (dateString) => {
         ];
     }
 };
+
 
 const Reservation = () => {
     const [formData, setFormData] = useState(defaultFormData);
