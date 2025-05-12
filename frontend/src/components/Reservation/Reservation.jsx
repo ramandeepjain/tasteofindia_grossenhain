@@ -61,6 +61,7 @@ const Reservation = () => {
     const [formData, setFormData] = useState(defaultFormData);
     const [error, setError] = useState('');
     const [isTimeSelectionOpen, setIsTimeSelectionOpen] = useState(false);
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
     const [timeSlots, setTimeSlots] = useState([]);
 
@@ -102,6 +103,7 @@ const Reservation = () => {
 
         setFormData(defaultFormData);
         setTimeSlots([]);
+        setShowSuccessPopup(true); // Show popup
     };
 
     // Handle input changes
@@ -194,6 +196,19 @@ const Reservation = () => {
 
                 </div>
             </div>
+            {showSuccessPopup && (
+                <div className="reservation-popup">
+                    <div className="reservation-popup-content">
+                        <p>
+                            <span className="reservation-success-highlight">
+                                Ihre Reservierung war erfolgreich!
+                            </span> <br />
+                            Bitte prüfen Sie auch Ihren <strong>SPAM-Ordner</strong> für die Bestätigungs-E-Mail.
+                        </p>
+                        <button onClick={() => setShowSuccessPopup(false)}>OK</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
