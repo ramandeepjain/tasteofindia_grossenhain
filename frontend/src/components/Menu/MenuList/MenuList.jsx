@@ -17,10 +17,10 @@ const MenuList = ({category, changeCategory}) => {
             </div>
             <div className="menu-list" id='menu-list'>
                 <div className="menu-list-tabs">
-                    <div onClick={()=>changeCategory("vegetarian")} className={category==="vegetarian"?"tab-selected":"tab"}>Vegetarisch</div>
-                    <div onClick={()=>changeCategory("chicken")} className={category==="chicken"?"tab-selected":"tab"}>Chicken</div>
-                    <div onClick={()=>changeCategory("lamm")} className={category==="lamm"?"tab-selected":"tab"}>Lamm</div>
-                    <div onClick={()=>changeCategory("dessert")} className={category==="dessert"?"tab-selected":"tab"}>Dessert</div>
+                    <div onClick={()=>changeCategory("Vegetarisch")} className={category==="Vegetarisch"?"tab-selected":"tab"}>Vegetarisch</div>
+                    <div onClick={()=>changeCategory("Chicken")} className={category==="Chicken"?"tab-selected":"tab"}>Chicken</div>
+                    <div onClick={()=>changeCategory("Lamm")} className={category==="Lamm"?"tab-selected":"tab"}>Lamm</div>
+                    <div onClick={()=>changeCategory("Desserts")} className={category==="Dessert"?"tab-selected":"tab"}>Desserts</div>
                 </div>
                 <div className="menu-list-items">
                     {items.map((item, index)=>{

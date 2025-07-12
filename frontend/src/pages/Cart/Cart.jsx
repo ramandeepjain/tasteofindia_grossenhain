@@ -7,8 +7,6 @@ import { assets } from '../../assets/assets';
 const Cart = () => {
   const { cartItems, items, removeFromCart, getTotalCartAmount, addToCart } = useContext(StoreContext);
 
-  const navigate = useNavigate();
-
   return (
     <div className='cart'>
       <div className="cart-items">
@@ -37,7 +35,6 @@ const Cart = () => {
                       <img onClick={()=>addToCart(item._id)} src={assets.add_icon_green} alt="" />
                   </div>
                   <p>{(parseFloat(item.price.replace(',', '.')) * cartItems[item._id]).toFixed(1)}</p>
-                  {/* <p onClick={() => removeFromCart(item._id)} className='cross'>x</p> */}
                 </div>
                 <hr />
               </div>
@@ -64,7 +61,7 @@ const Cart = () => {
                 <input type="text" name='lastName' placeholder='Name *' required/>
             </div>
             <input type="text" name='phone' placeholder='Telefon *'  required/>
-
+            <p>Mit der Online Bestellung erklären Sie sich einverstanden mit unseren <a href='/datenschutz'>Datenschutzerklärung</a>.</p>
             <button>Submit</button>
           </div>
         </div>

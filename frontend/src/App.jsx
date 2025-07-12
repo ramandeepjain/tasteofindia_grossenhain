@@ -8,7 +8,6 @@ import Datenschutz from './pages/Datenschutz/Datenschutz'
 import Impressium from './pages/Impressium/Impressium'
 import Shop from './pages/Shop/Shop'
 import Cart from './pages/Cart/Cart'
-import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 
 const App = () => {
   const location = useLocation();
@@ -24,7 +23,6 @@ const App = () => {
         <Route path='/impressium' element={<Impressium/>}></Route>
         <Route path='/shop' element={<Shop/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
-        <Route path='/order' element={<PlaceOrder/>}></Route>
       </Routes>
     </div>
   )
