@@ -49,7 +49,10 @@ const Header = () => {
               <p>Mo-Sa, Feiertags: 11:00-14:00, 17:00-22:00</p>
               <p>Sonntags: 17:00-22:00</p>
             </div>
-            <a href='#reservation' className='header-button'>Reservieren</a>
+            <div className="header-data-left-buttons">
+              <a href='#reservation' className='header-button'>Reservieren</a>
+              <a href='/shop' className='header-button'>Bestellen</a>
+            </div>
           </div>
           <div className="header-img">
             <img src={assets.spices_indianbowls} alt="" />

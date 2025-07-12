@@ -90,19 +90,19 @@ const FullMenu = () => {
       <div className="fullmenu-title">
         <h2>Unsere Speisekarte</h2>
       </div>
-      {listContainerLeft(assets.dal_2, "Suppen", "soups")}      
-      {listContainerRight(assets.pakoras, "Vorspeisen", "starters")}
-      {listContainerLeft(assets.salat, "Salat", "salad")}
-      {listContainerRight(assets.paneer, "Vegetarisch", "vegetarian")}
-      {listContainerLeft(assets.chicken4, "Chicken", "chicken")}
-      {listContainerRight(assets.chicken3, "Lamm", "lamm")}
-      {listContainerLeft(assets.duck, "Ente", "ente")}
-      {listContainerRight(assets.fish, "Fisch", "fish")}
-      {listContainerLeft(assets.prawn, "Scampi", "scampi")}
-      {listContainerRight(assets.tandoori, "Tandoori", "tandoori")}
-      {listContainerLeft(assets.biryani, "Reisgerichte", "reisgerichte")}
-      {listContainerRight(assets.naan, "Beilagen", "side-dishes")}
-      {listContainerLeft(assets.gulab_jamun, "Desserts", "dessert")}
+      {listContainerLeft(assets.dal_2, "Suppen", "Suppen")}      
+      {listContainerRight(assets.pakoras, "Vorspeisen", "Vorspeisen")}
+      {listContainerLeft(assets.salat, "Salate", "Salate")}
+      {listContainerRight(assets.paneer, "Vegetarisch", "Vegetarisch")}
+      {listContainerLeft(assets.chicken4, "Chicken", "Chicken")}
+      {listContainerRight(assets.chicken3, "Lamm", "Lamm")}
+      {listContainerLeft(assets.duck, "Ente", "Ente")}
+      {listContainerRight(assets.fish, "Fisch", "Fisch")}
+      {listContainerLeft(assets.prawn, "Scampi", "Scampi")}
+      {listContainerRight(assets.tandoori, "Tandoori", "Tandoori")}
+      {listContainerLeft(assets.biryani, "Reisgerichte", "Reisgerichte")}
+      {listContainerRight(assets.naan, "Beilagen", "Beilagen")}
+      {listContainerLeft(assets.gulab_jamun, "Desserts", "Desserts")}
       {/* {listContainerRight(assets.dining_experience_2, "Getränke", "drinks")} */}
       {/* Allergy Legend */}
       <div style={{ marginBottom: "2em"}}>

@@ -25,6 +25,11 @@ import fish from './fish_curry.png'
 import naan from './naan.png'
 import gulab_jamun from './gulab_jamun.png'
 import duck from './duck.png'
+import basket_icon from './basket_icon.png'
+import add_icon_white from './add_icon_white.png'   
+import remove_icon_red from './remove_icon_red.png'
+import add_icon_green from './add_icon_green.png'
+import rating_stars from './rating_stars.png'
 
 export const assets = {
     biryani,
@@ -53,5 +58,10 @@ export const assets = {
     naan,
     duck,
     gulab_jamun,
-    chicken4
+    chicken4,
+    basket_icon,
+    add_icon_white,
+    remove_icon_red,
+    add_icon_green,
+    rating_stars
 }

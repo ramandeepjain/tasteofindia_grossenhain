@@ -80,19 +80,28 @@
     border-style: solid;
     border-width: 1px;
     border-color: white;
-    background-color: transparent;
-    color: white;
+    background-color: var(--bg);
+    color: black;
     font-weight: 400;
     line-height: 120%;
     font-size: 14px;
     border-radius: 30px;
     cursor: pointer;
     transition: 0.3s;
+    width: 180px; /* or any desired value */
+    text-align: center;
 }
 
 .header-button:hover{
     background-color: white;
     color: black;
+}
+
+.header-data-left-buttons{
+    display: flex;
+    flex-flow: row;
+    column-gap: 20px;
+    width: 100%;
 }
 
 @media screen and (max-width: 991px) {
@@ -150,6 +159,14 @@
         text-align: center;
         align-items: center;
     }
+
+    .header-data-left-buttons{
+        /* flex-flow: column; */
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+    }
+
 }
 
 .box {
