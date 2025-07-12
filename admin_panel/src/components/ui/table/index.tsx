@@ -44,7 +44,7 @@ const TableBody: React.FC<TableBodyProps> = ({ children, className }) => {
   return <tbody className={className}>{children}</tbody>;
 };
 
-// ✅ TableRow now accepts and spreads all HTML props, including onClick
+// TableRow now accepts and spreads all HTML props, including onClick
 const TableRow: React.FC<TableRowProps> = ({ children, className, ...rest }) => {
   return <tr className={className} {...rest}>{children}</tr>;
 };
