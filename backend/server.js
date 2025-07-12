@@ -16,12 +16,14 @@ const postReservationsRoute = require('./routes/postReservations');
 const getReservationsRoute = require('./routes/getReservations');
 const deleteReservationRoute = require('./routes/deleteReservation')
 const postOrdersRoute = require('./routes/postOrders');
+const getOrdersRoute = require('./routes/getOrders');
 
 app.use(postEmailRoute);
 app.use(postReservationsRoute);
 app.use(getReservationsRoute);
 app.use(deleteReservationRoute);
 app.use(postOrdersRoute);
+app.use(getOrdersRoute);
 
 const PORT = 5000;
 app.listen(PORT, () => {
