@@ -51,7 +51,7 @@ const Header = () => {
             </div>
             <div className="header-data-left-buttons">
               <a href='#reservation' className='header-button'>Reservieren</a>
-              <a href='/shop' className='header-button'>Bestellen</a>
+              <a href='/shop' className='header-button'>Abholbestellung</a>
             </div>
           </div>
           <div className="header-img">

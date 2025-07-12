@@ -92,7 +92,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="customer-details">
-          <h2>  Bestellen </h2>
+          <h2>  Bestellen und Abholen </h2>
           <div className="customer-detail-input">
             <div className="multi-fields">
                 <input type="text" name='firstName'  placeholder='Vorname' value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
@@ -100,7 +100,7 @@ const Cart = () => {
             </div>
             <input type="text" name='phone' placeholder='Telefon *' required value={phone} onChange={(e) => setPhone(e.target.value)} />
             <p>Mit der Online Bestellung erklären Sie sich einverstanden mit unseren <a href='/datenschutz'>Datenschutzerklärung</a>.</p>
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Jetzt Abholen</button>
           </div>
         </div>
       </div>
