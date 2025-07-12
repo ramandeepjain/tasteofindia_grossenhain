@@ -1,11 +1,49 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
-import { useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/assets';
+import axios from 'axios';
 
 const Cart = () => {
-  const { cartItems, items, removeFromCart, getTotalCartAmount, addToCart } = useContext(StoreContext);
+  const { cartItems, items, setCartItems, removeFromCart, getTotalCartAmount, addToCart } = useContext(StoreContext);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleSubmit = async () => {
+    const preparedCartItems = [];
+
+    for (const item of items) {
+      const quantity = cartItems[item._id];
+      if (quantity > 0) {
+        const price = parseFloat(item.price.replace(',', '.')); // Convert comma to dot
+        preparedCartItems.push({
+          item_name: item.name,
+          quantity: quantity,
+          price: price
+        });
+      }
+    }
+
+    const payload = {
+      firstName,
+      lastName,
+      phone,
+      total_amount: getTotalCartAmount(),
+      cartItems: preparedCartItems
+    };
+
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders`, payload);
+      alert('Bestellung erfolgreich!');
+      setCartItems({});
+    } catch (error) {
+      console.error('Order submit error:', error);
+      alert('Serverfehler. Bitte versuchen Sie es erneut.');
+    }
+  };
+
 
   return (
     <div className='cart'>
@@ -57,12 +95,12 @@ const Cart = () => {
           <h2>  Bestellen </h2>
           <div className="customer-detail-input">
             <div className="multi-fields">
-                <input type="text" name='firstName' placeholder='Vorname' />
-                <input type="text" name='lastName' placeholder='Name *' required/>
+                <input type="text" name='firstName'  placeholder='Vorname' value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                <input type="text" name='lastName' placeholder='Name *' required value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
-            <input type="text" name='phone' placeholder='Telefon *'  required/>
+            <input type="text" name='phone' placeholder='Telefon *' required value={phone} onChange={(e) => setPhone(e.target.value)} />
             <p>Mit der Online Bestellung erklären Sie sich einverstanden mit unseren <a href='/datenschutz'>Datenschutzerklärung</a>.</p>
-            <button>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </div>
         </div>
       </div>
