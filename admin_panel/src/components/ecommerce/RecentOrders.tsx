@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,14 +7,17 @@ import {
   TableRow,
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
-
+import alarmSound from "../../assets/alarm.mp3";
 
 export default function RecentOrders() {
-
+    const alarmRef = useRef<HTMLAudioElement | null>(null);
     const [orders, setOrders] = useState([]);
     const [seenOrderIds, setSeenOrderIds] = useState(new Set());
 
     useEffect(() => {
+      alarmRef.current = new Audio(alarmSound);
+      alarmRef.current.loop = true;
+
       const fetchOrders = async () => {
         try {
           const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/today`);
@@ -26,11 +29,17 @@ export default function RecentOrders() {
 
           setOrders((prevOrders) => {
             const prevIds = new Set(prevOrders.map(o => o.order_id));
-            const newIds = newData
-              .filter(order => !prevIds.has(order.order_id))
-              .map(order => order.order_id);
+            const newOrders = newData.filter(order => !prevIds.has(order.order_id));
+            const newIds = newOrders.map(order => order.order_id);
 
-            // Remove these from seen set so they are highlighted
+            // 🔊 Play tone if there are new orders
+            if (newIds.length > 0) {
+              alarmRef.current.play().catch((err) => {
+                console.warn("Sound playback failed:", err);
+              });
+            }
+
+            // Remove newIds from seenOrderIds so they highlight
             setSeenOrderIds(prevSeen => {
               const updated = new Set(prevSeen);
               newIds.forEach(id => updated.delete(id));
