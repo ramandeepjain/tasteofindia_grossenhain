@@ -6,22 +6,20 @@ interface TableProps {
   className?: string; // Optional className for styling
 }
 
-// Props for TableHeader
 interface TableHeaderProps {
   children: ReactNode; // Header row(s)
   className?: string; // Optional className for styling
 }
 
-// Props for TableBody
 interface TableBodyProps {
   children: ReactNode; // Body row(s)
   className?: string; // Optional className for styling
 }
 
-// Props for TableRow
-interface TableRowProps {
-  children: ReactNode; // Cells (th or td)
-  className?: string; // Optional className for styling
+// ✅ Updated here:
+interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
+  children: ReactNode;
+  className?: string;
 }
 
 // Props for TableCell
@@ -46,9 +44,9 @@ const TableBody: React.FC<TableBodyProps> = ({ children, className }) => {
   return <tbody className={className}>{children}</tbody>;
 };
 
-// TableRow Component
-const TableRow: React.FC<TableRowProps> = ({ children, className }) => {
-  return <tr className={className}>{children}</tr>;
+// ✅ TableRow now accepts and spreads all HTML props, including onClick
+const TableRow: React.FC<TableRowProps> = ({ children, className, ...rest }) => {
+  return <tr className={className} {...rest}>{children}</tr>;
 };
 
 // TableCell Component
@@ -58,7 +56,7 @@ const TableCell: React.FC<TableCellProps> = ({
   className,
 }) => {
   const CellTag = isHeader ? "th" : "td";
-  return <CellTag className={` ${className}`}>{children}</CellTag>;
+  return <CellTag className={className}>{children}</CellTag>;
 };
 
 export { Table, TableHeader, TableBody, TableRow, TableCell };

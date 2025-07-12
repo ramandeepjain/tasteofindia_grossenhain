@@ -11,27 +11,49 @@ import Badge from "../ui/badge/Badge";
 
 export default function RecentOrders() {
 
-  const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState([]);
+    const [seenOrderIds, setSeenOrderIds] = useState(new Set());
 
-  useEffect(() => {
-    async function fetchOrders() {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/today`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch orders");
+    useEffect(() => {
+      const fetchOrders = async () => {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/today`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch orders");
+          }
+
+          const newData = await response.json();
+
+          setOrders((prevOrders) => {
+            const prevIds = new Set(prevOrders.map(o => o.order_id));
+            const newIds = newData
+              .filter(order => !prevIds.has(order.order_id))
+              .map(order => order.order_id);
+
+            // Remove these from seen set so they are highlighted
+            setSeenOrderIds(prevSeen => {
+              const updated = new Set(prevSeen);
+              newIds.forEach(id => updated.delete(id));
+              return updated;
+            });
+
+            return newData;
+          });
+
+          console.log("Today's Orders:", newData);
+        } catch (error) {
+          console.error("Error fetching orders:", error);
         }
-        const data = await response.json();
-        setOrders(data);
-        console.log("Today's Orders:", data);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      }
-    }
+      };
 
-    fetchOrders();
-    const interval = setInterval(fetchOrders, 60000); // every 60 seconds
-    return () => clearInterval(interval);
-  }, []);
+      fetchOrders();
+      const interval = setInterval(fetchOrders, 60000); // every 60 seconds
+      return () => clearInterval(interval);
+    }, []);
+
+    function handleRowClick(orderId) {
+      setSeenOrderIds((prev) => new Set(prev).add(orderId));
+    }
 
     return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
@@ -69,7 +91,15 @@ export default function RecentOrders() {
                 .join(", ");
 
               return (
-                <TableRow key={order.order_id}>
+                  <TableRow
+                    key={order.order_id}
+                    onClick={() => handleRowClick(order.order_id)}
+                    className={`cursor-pointer transition-colors duration-300 ${
+                      !seenOrderIds.has(order.order_id)
+                        ? 'bg-green-50 dark:bg-green-900/20'
+                        : 'bg-white dark:bg-white/[0.03]'
+                    }`}
+                  >
                   <TableCell className="py-3 text-theme-sm text-gray-800 dark:text-white/90">
                     <div className="font-medium">{order.customer_name}</div>
                     <div className="text-theme-xs text-gray-500 dark:text-gray-400">
