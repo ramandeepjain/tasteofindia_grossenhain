@@ -61,7 +61,19 @@ export default function RecentOrders() {
     }, []);
 
     function handleRowClick(orderId) {
-      setSeenOrderIds((prev) => new Set(prev).add(orderId));
+      setSeenOrderIds((prev) => {
+        const updated = new Set(prev);
+        updated.add(orderId);
+
+        // Stop alarm if all orders are seen
+        const allSeen = orders.every(order => updated.has(order.order_id));
+        if (allSeen && alarmRef.current) {
+          alarmRef.current.pause();
+          alarmRef.current.currentTime = 0; // rewind to start
+        }
+
+        return updated;
+      });
     }
 
     return (
