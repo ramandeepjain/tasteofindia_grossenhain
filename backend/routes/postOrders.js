@@ -13,7 +13,7 @@ const pool = new Pool({
 
 
 router.post('/api/orders', async (req, res) => {
-  const { cartItems, firstName, lastName, phone_number, total_amount } = req.body;
+  const { cartItems, firstName, lastName, phone, total_amount } = req.body;
 
   if (!cartItems?.length || !firstName || !lastName || !total_amount) {
     return res.status(400).json({ error: 'Missing required data' });
@@ -30,7 +30,7 @@ router.post('/api/orders', async (req, res) => {
     // First, try to find existing customer by name and phone
     let customerRes = await client.query(
     `SELECT id FROM shop_customers WHERE name = $1 AND phone = $2`,
-    [customerName, phone_number]
+    [customerName, phone]
     );
 
     let customerId;
@@ -42,7 +42,7 @@ router.post('/api/orders', async (req, res) => {
         // Insert new customer
         const insertRes = await client.query(
             'INSERT INTO shop_customers (name, phone) VALUES ($1, $2) RETURNING id',
-            [customerName, phone_number]
+            [customerName, phone]
         );
         customerId = insertRes.rows[0].id;
     }

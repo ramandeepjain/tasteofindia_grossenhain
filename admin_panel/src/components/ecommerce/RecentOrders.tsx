@@ -81,7 +81,7 @@ export default function RecentOrders() {
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Today's Orders
+            Bestellungen von heute
           </h3>
         </div>
       </div>
@@ -123,24 +123,28 @@ export default function RecentOrders() {
                   >
                   <TableCell className="py-3 text-theme-sm text-gray-800 dark:text-white/90">
                     <div className="font-medium">{order.customer_name}</div>
-                    <div className="text-theme-xs text-gray-500 dark:text-gray-400">
-                      {order.customer_phone}
+                    <div className="text-sm text-gray-700 dark:text-gray-300">
+                      {order.customer_phone || "No phone number"}
                     </div>
                   </TableCell>
                   <TableCell className="py-3 text-theme-sm text-gray-700 dark:text-white/90">
                     <div className="flex flex-col gap-1">
                       {order.items.map((item, idx) => (
                         <div key={idx}>
-                          {item.item_name} x{item.quantity}
+                          {item.item_name} <span className="ml-1 inline-block px-1.5 py-0.5 text-xs font-medium bg-gray-200 text-gray-800 rounded dark:bg-white/10 dark:text-white">x{item.quantity}</span>
                         </div>
                       ))}
                     </div>
                   </TableCell>
                   <TableCell className="py-3 text-theme-sm text-gray-700 dark:text-white/90">
-                    ${order.total_amount}
+                    {order.total_amount} €
                   </TableCell>
                   <TableCell className="py-3 text-theme-sm text-gray-700 dark:text-white/90">
-                    <Badge size="sm" color="success">Placed</Badge>
+                    {!seenOrderIds.has(order.order_id) ? (
+                      <Badge size="sm" color="warning">Neue</Badge>
+                    ) : (
+                      <Badge size="sm" color="success">Bestellt</Badge>
+                    )}
                   </TableCell>
                 </TableRow>
               );
