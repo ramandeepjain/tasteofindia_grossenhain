@@ -12,27 +12,45 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Define the route for order confirmation
+// Define the route for order confirmation or cancellation
 router.post('/api/order-confirmation', async (req, res) => {
-    const { firstName, lastName, email, phone, pickupTime } = req.body;
+    const { firstName, lastName, email, pickupTime } = req.body;
 
-    if (!email || !pickupTime || !firstName || !lastName) {
+    if (!email || pickupTime === undefined || !firstName || !lastName) {
         return res.status(400).send('Missing required fields: firstName, lastName, email, pickupTime');
     }
 
-    const subject = `Ihre Bestellung ist in ${pickupTime} Min bereit`;
-    const message = `
-        Sehr geehrte*r ${lastName},
+    let subject, message;
 
-        vielen Dank für Ihre Bestellung!
+    if (pickupTime === 100) {
+        // Cancellation email
+        subject = `Ihre Bestellung wurde storniert`;
+        message = `
+            Sehr geehrte*r ${lastName},
 
-        Wir möchten Sie darüber informieren, dass Ihre Bestellung in ca. ${pickupTime} Minuten abholbereit sein wird.
+            leider müssen wir Ihnen mitteilen, dass Ihre Bestellung storniert wurde.
 
-        Falls Sie Fragen haben oder Änderungen vornehmen möchten, kontaktieren Sie uns bitte unter +49 (0)3522-5280790.
+            Falls Sie Fragen haben, kontaktieren Sie uns bitte unter +49 (0)3522-5280790.
 
-        Mit freundlichen Grüßen,
-        Taste of India Großenhain Team
-    `.trim();
+            Mit freundlichen Grüßen,
+            Taste of India Großenhain Team
+        `.trim();
+    } else {
+        // Regular confirmation email
+        subject = `Ihre Bestellung ist in ${pickupTime} Min bereit`;
+        message = `
+            Sehr geehrte*r ${lastName},
+
+            vielen Dank für Ihre Bestellung!
+
+            Wir möchten Sie darüber informieren, dass Ihre Bestellung in ca. ${pickupTime} Minuten abholbereit sein wird.
+
+            Falls Sie Fragen haben oder Änderungen vornehmen möchten, kontaktieren Sie uns bitte unter +49 (0)3522-5280790.
+
+            Mit freundlichen Grüßen,
+            Taste of India Großenhain Team
+        `.trim();
+    }
 
     try {
         await transporter.sendMail({
@@ -41,10 +59,10 @@ router.post('/api/order-confirmation', async (req, res) => {
             subject: subject,
             text: message
         });
-        res.status(200).send('Order confirmation email sent successfully');
+        res.status(200).send('Order confirmation/cancellation email sent successfully');
     } catch (error) {
-        console.error('Error sending order confirmation email:', error);
-        res.status(500).send('Failed to send order confirmation email');
+        console.error('Error sending order email:', error);
+        res.status(500).send('Failed to send order email');
     }
 });
 
