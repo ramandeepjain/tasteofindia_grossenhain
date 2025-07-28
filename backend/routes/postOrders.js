@@ -11,11 +11,10 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
-
 router.post('/api/orders', async (req, res) => {
-  const { cartItems, firstName, lastName, phone, total_amount } = req.body;
+  const { cartItems, firstName, lastName, phone, email, total_amount } = req.body;
 
-  if (!cartItems?.length || !firstName || !lastName || !total_amount) {
+  if (!cartItems?.length || !firstName || !lastName || !email || !total_amount) {
     return res.status(400).json({ error: 'Missing required data' });
   }
 
@@ -27,10 +26,10 @@ router.post('/api/orders', async (req, res) => {
     // Combine first and last name
     const customerName = `${firstName} ${lastName}`;
     
-    // First, try to find existing customer by name and phone
+    // Try to find existing customer by name, phone, and email
     let customerRes = await client.query(
-    `SELECT id FROM shop_customers WHERE name = $1 AND phone = $2`,
-    [customerName, phone]
+      `SELECT id FROM shop_customers WHERE name = $1 AND phone = $2 AND email = $3`,
+      [customerName, phone, email]
     );
 
     let customerId;
@@ -41,8 +40,8 @@ router.post('/api/orders', async (req, res) => {
     } else {
         // Insert new customer
         const insertRes = await client.query(
-            'INSERT INTO shop_customers (name, phone) VALUES ($1, $2) RETURNING id',
-            [customerName, phone]
+            'INSERT INTO shop_customers (name, phone, email) VALUES ($1, $2, $3) RETURNING id',
+            [customerName, phone, email]
         );
         customerId = insertRes.rows[0].id;
     }
@@ -70,8 +69,8 @@ router.post('/api/orders', async (req, res) => {
         } else {
             // Insert item
             const insertRes = await client.query(
-            'INSERT INTO items (name, price) VALUES ($1, $2) RETURNING id',
-            [item_name, price]
+              'INSERT INTO items (name, price) VALUES ($1, $2) RETURNING id',
+              [item_name, price]
             );
             itemId = insertRes.rows[0].id;
         }

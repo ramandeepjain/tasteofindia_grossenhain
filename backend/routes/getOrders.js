@@ -23,6 +23,7 @@ router.get('/api/orders/today', async (req, res) => {
         o.created_at,
         sc.name AS customer_name,
         sc.phone AS customer_phone,
+        sc.email AS customer_email,
         json_agg(json_build_object(
           'item_name', i.name,
           'quantity', oi.quantity,
@@ -33,7 +34,7 @@ router.get('/api/orders/today', async (req, res) => {
       JOIN order_items oi ON o.id = oi.order_id
       JOIN items i ON oi.item_id = i.id
       WHERE o.created_at::date = CURRENT_DATE
-      GROUP BY o.id, sc.name, sc.phone, o.total_amount, o.created_at
+      GROUP BY o.id, sc.name, sc.phone, sc.email, o.total_amount, o.created_at
       ORDER BY o.created_at DESC
     `);
 

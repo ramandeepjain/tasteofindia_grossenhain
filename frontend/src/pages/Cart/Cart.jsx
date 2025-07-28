@@ -10,6 +10,7 @@ const Cart = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState(''); 
 
   const handleSubmit = async () => {
     const preparedCartItems = [];
@@ -30,6 +31,7 @@ const Cart = () => {
       firstName,
       lastName,
       phone,
+      email: email, 
       total_amount: getTotalCartAmount(),
       cartItems: preparedCartItems
     };
@@ -99,6 +101,7 @@ const Cart = () => {
                 <input type="text" name='lastName' placeholder='Name *' required value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
             <input type="text" name='phone' placeholder='Telefon *' required value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="email" name='email' placeholder='Email *' required value={email} onChange={(e) => setEmail(e.target.value)} /> 
             <p>Mit der Online Bestellung erklären Sie sich einverstanden mit unseren <a href='/datenschutz'>Datenschutzerklärung</a>.</p>
             <button onClick={handleSubmit}>Jetzt Abholen</button>
           </div>
