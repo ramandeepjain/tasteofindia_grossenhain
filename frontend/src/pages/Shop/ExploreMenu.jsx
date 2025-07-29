@@ -6,7 +6,7 @@ import { menu_list } from '../../components/Menu/MenuList/menu-items'
 const ExploreMenu = ({category, setCategory}) => {
   return (
     <div className='explore-menu' id='explore-menu'>
-      <h2>Unsere Speisekarte</h2>
+      {/* <h2>Unsere Speisekarte</h2> */}
       <div className="explore-menu-list">
         {menu_list.map((item,index)=>{
           return (
@@ -17,7 +17,7 @@ const ExploreMenu = ({category, setCategory}) => {
           )
         })}
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
   )
 }

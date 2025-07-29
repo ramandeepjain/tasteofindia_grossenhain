@@ -20,7 +20,7 @@ const FoodDisplay = ({category}) => {
             <div className="food-display-list" ref={listRef}>
                 {items.map((item, index)=>{
                   if (category==="All" || category===item.category) {
-                    return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} allergies={item.allergies} />
+                    return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} allergies={item.allergies} category={category} />
                   }
                 })}
             </div>

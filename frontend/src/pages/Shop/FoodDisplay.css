@@ -1,5 +1,5 @@
 .food-display{
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 .food-display h2{
@@ -10,7 +10,7 @@
 .food-display-list{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    margin-top: 30px;
+    margin-top: 10px;
     gap: 30px;
     row-gap: 50px;
     height: 600px; 
