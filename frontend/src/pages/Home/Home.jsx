@@ -8,12 +8,13 @@ import MenuCategory from '../../components/Menu/MenuCategory/MenuCategory'
 import MenuList from '../../components/Menu/MenuList/MenuList'
 import Reservation from '../../components/Reservation/Reservation'
 import Footer from '../../components/Footer/Footer'
-import Navbar from '../../components/Navbar/Navbar'
+import MittagsangebotPopup from '../Popups/LunchOffer'
 
 const Home = () => {
   return (
     <div>
         {/* <Navbar/> */}
+        <MittagsangebotPopup/>
         <Header/>
         <About/>
         <Features/>
