@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 import axios from 'axios';
 
 const Cart = () => {
-  const { cartItems, items, setCartItems, removeFromCart, getTotalCartAmount, addToCart } = useContext(StoreContext);
+  const { cartItems, items, setCartItems, removeFromCart, getTotalCartAmount, addToCart, getItemEffectivePrice } = useContext(StoreContext);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -66,7 +66,7 @@ const Cart = () => {
                   <p>
                     {item.name}
                     <br />
-                    <span >€{item.price}</span>
+                    <span >€{getItemEffectivePrice(item._id)}</span>
                   </p>
 
                   <div className="item-counter">
@@ -74,7 +74,7 @@ const Cart = () => {
                       <p>{cartItems[item._id]}</p>
                       <img onClick={()=>addToCart(item._id)} src={assets.add_icon_green} alt="" />
                   </div>
-                  <p>{(parseFloat(item.price.replace(',', '.')) * cartItems[item._id]).toFixed(1)}</p>
+                  <p>{(parseFloat(getItemEffectivePrice(item._id)) * cartItems[item._id]).toFixed(1)}</p>
                 </div>
                 <hr />
               </div>

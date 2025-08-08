@@ -5,17 +5,7 @@ import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({id, name, price, description, allergies, category}) => {
 
-  const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
-
-  // Helper function to check if it's lunch time (before 15:00)
-  const isLunchTime = () => {
-    const now = new Date();
-    return now.getHours() < 14;
-  };
-
-  // Check if category qualifies for offer
-  const isOfferCategory = category === 'Vegetarisch' || category === 'Chicken';
-  const offerPrice = "9,90";
+  const {cartItems, addToCart, removeFromCart, getItemEffectivePrice, isLunchTime, isOfferCategory} = useContext(StoreContext);
 
   return (
     <div className='food-item'>
@@ -34,10 +24,10 @@ const FoodItem = ({id, name, price, description, allergies, category}) => {
               )}
             </p>
             <div className='food-item-footer'>
-              {isOfferCategory && isLunchTime() ? (
+              {isOfferCategory(category) && isLunchTime() ? (
                 <p className='food-item-price'>
                   <span style={{ textDecoration: 'line-through', color: 'gray' }}>€{price}</span> 
-                  &nbsp;<span>  €{offerPrice}</span>
+                  &nbsp;<span>  €{getItemEffectivePrice(id)}</span>
                 </p>
               ) : (
                 <p className='food-item-price'>€{price}</p>

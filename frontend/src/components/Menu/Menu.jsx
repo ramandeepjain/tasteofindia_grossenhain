@@ -3,7 +3,7 @@ import MenuCategory from './MenuCategory/MenuCategory';
 import MenuList from './MenuList/MenuList';
 
 const Menu = () => {
-    const [category, setCategory] = useState("chicken");
+    const [category, setCategory] = useState("Chicken");
 
     const changeCategory = (newCategory) => {
         setCategory(newCategory);  // Function to update the state
